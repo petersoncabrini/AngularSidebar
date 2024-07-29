@@ -1,0 +1,15 @@
+<div class="sidenav-header">
+    <img src="/assets/default-profile-picture.svg" alt="">
+    <div class="header-text">
+        <h2>User</h2>
+        <p>User description</p>
+    </div>
+</div>
+<mat-nav-list>
+    @for (menu of menuItems(); track $index) {
+        <a mat-list-item>
+            <mat-icon matListItemIcon>{{menu.icon}}</mat-icon>
+            <span matListItemTitle>{{menu.label}}</span>
+        </a>
+    }
+</mat-nav-list>
