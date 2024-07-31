@@ -9,7 +9,7 @@
 </div>
 <mat-nav-list>
     @for (menu of menuItems(); track $index) {
-        <a mat-list-item [routerLink]="menu.route">
+        <a mat-list-item [routerLink]="menu.route" routerLinkActive #rla="routerLinkActive" [activated]="rla.isActive">
             <mat-icon matListItemIcon>{{menu.icon}}</mat-icon>
             <span matListItemTitle *ngIf="!this.sidenavCollapsed()">{{menu.label}}</span>
         </a>
