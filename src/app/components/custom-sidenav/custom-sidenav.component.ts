@@ -1,7 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input, computed, input, signal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon'
 import { MatListModule } from '@angular/material/list'
-
 
 export type MenuItem = {
   icon: string;
@@ -12,12 +12,19 @@ export type MenuItem = {
 @Component({
   selector: 'app-custom-sidenav',
   standalone: true,
-  imports: [MatListModule, MatIconModule],
+  imports: [CommonModule, MatListModule, MatIconModule],
   templateUrl: './custom-sidenav.component.html',
   styleUrl: './custom-sidenav.component.scss'
 })
 
 export class CustomSidenavComponent {
+
+  sidenavCollapsed = signal(false);
+  @Input() set collapsed (value: boolean){
+    this.sidenavCollapsed.set(value);
+  }
+
+  profilePictureSize = computed(() => this.sidenavCollapsed() ? '32' : '100')
 
   menuItems = signal<MenuItem[]>([
     {
